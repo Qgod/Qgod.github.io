@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      对spring的一些理解 | 周奇的博客 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="阿Q">
+    
+    
+
+    <meta name="description" content="IOC和AOP原理IOC 原理：改变对象的获取方式，由原有的new方式，改为第三方创建注入的方式。实现原理采用的事DI依赖注入，DI又分为setter方式和构造器方式（解析XML，利用反射创建实例调用注入方法）AOP 原理：面向切面编程，将一个共通组件动态切入到目标组件方法上，实现原理采用的是动态代理技术，使用了AOP后容器返回的Bean是一个动态生成类型，该类去调用目标方法和方面组件处理。
+共同">
+<meta property="og:type" content="article">
+<meta property="og:title" content="对spring的一些理解 | 周奇的博客">
+<meta property="og:url" content="http://yoursite.com/2016/09/24/something-to-say/index.html">
+<meta property="og:site_name" content="周奇的博客">
+<meta property="og:description" content="IOC和AOP原理IOC 原理：改变对象的获取方式，由原有的new方式，改为第三方创建注入的方式。实现原理采用的事DI依赖注入，DI又分为setter方式和构造器方式（解析XML，利用反射创建实例调用注入方法）AOP 原理：面向切面编程，将一个共通组件动态切入到目标组件方法上，实现原理采用的是动态代理技术，使用了AOP后容器返回的Bean是一个动态生成类型，该类去调用目标方法和方面组件处理。
+共同">
+<meta property="og:updated_time" content="2016-09-24T03:07:08.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="对spring的一些理解 | 周奇的博客">
+<meta name="twitter:description" content="IOC和AOP原理IOC 原理：改变对象的获取方式，由原有的new方式，改为第三方创建注入的方式。实现原理采用的事DI依赖注入，DI又分为setter方式和构造器方式（解析XML，利用反射创建实例调用注入方法）AOP 原理：面向切面编程，将一个共通组件动态切入到目标组件方法上，实现原理采用的是动态代理技术，使用了AOP后容器返回的Bean是一个动态生成类型，该类去调用目标方法和方面组件处理。
+共同">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">周奇的博客</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/#blog" title="" class="blog-button">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于me</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archives" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="http://weibo.com/u/5281978911?refer_flag=1001030101_&is_all=1" title="" class="">微博</a></li>
+              
+                
+                <li class="navigation__item"><a href="https://www.zhihu.com/people/jia-ge-da-gua-hao" title="" class="">知乎</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">对spring的一些理解</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-09-24" class="post-meta__date date">2016-09-24</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h3 id="IOC和AOP原理"><a href="#IOC和AOP原理" class="headerlink" title="IOC和AOP原理"></a>IOC和AOP原理</h3><p>IOC 原理：改变对象的获取方式，由原有的new方式，改为第三方创建注入的方式。实现原理采用的事DI依赖注入，DI又分为setter方式和构造器方式（解析XML，利用反射创建实例调用注入方法）<br>AOP 原理：面向切面编程，将一个共通组件动态切入到目标组件方法上，实现原理采用的是动态代理技术，使用了AOP后容器返回的Bean是一个动态生成类型，该类去调用目标方法和方面组件处理。</p>
+<h3 id="共同的优点"><a href="#共同的优点" class="headerlink" title="共同的优点"></a>共同的优点</h3><p> IOC和AOP优点:降低程序组件之间的耦合度,结构灵活。</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/09/24/something-to-say/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"zhouqi"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016. | <a href="https://hexo.io/">Hexo</a> | by 阿Q</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
