@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Java 面向对象 | 周奇的博客 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="阿Q">
+    
+    
+
+    <meta name="description" content="面向对象（OOP）与面向过程1.二者都是一种思想。面向对象是相对于面向过程而言的。面向过程，强调的是行为。面向对象，将功能封装进对象，强调具备了功能的对象。2.面向对象更加强调运用人类在日常的思维逻辑中采用的思想与原则，如抽象、分类、继承、聚合、多态等。
+程序员从执行者转化成了指挥者。完成需求时：1.先去找具有所需功能对象来用。2.如果对象不存在，那么创建一个具有所需功能的对象。3.这样简化开发并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 面向对象 | 周奇的博客">
+<meta property="og:url" content="http://yoursite.com/2016/11/06/about-Java/index.html">
+<meta property="og:site_name" content="周奇的博客">
+<meta property="og:description" content="面向对象（OOP）与面向过程1.二者都是一种思想。面向对象是相对于面向过程而言的。面向过程，强调的是行为。面向对象，将功能封装进对象，强调具备了功能的对象。2.面向对象更加强调运用人类在日常的思维逻辑中采用的思想与原则，如抽象、分类、继承、聚合、多态等。
+程序员从执行者转化成了指挥者。完成需求时：1.先去找具有所需功能对象来用。2.如果对象不存在，那么创建一个具有所需功能的对象。3.这样简化开发并">
+<meta property="og:updated_time" content="2016-11-06T11:29:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 面向对象 | 周奇的博客">
+<meta name="twitter:description" content="面向对象（OOP）与面向过程1.二者都是一种思想。面向对象是相对于面向过程而言的。面向过程，强调的是行为。面向对象，将功能封装进对象，强调具备了功能的对象。2.面向对象更加强调运用人类在日常的思维逻辑中采用的思想与原则，如抽象、分类、继承、聚合、多态等。
+程序员从执行者转化成了指挥者。完成需求时：1.先去找具有所需功能对象来用。2.如果对象不存在，那么创建一个具有所需功能的对象。3.这样简化开发并">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">周奇的博客</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/" title="" class="">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="/about" title="" class="">关于me</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archives" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="http://weibo.com/u/5281978911?refer_flag=1001030101_&is_all=1" title="" class="">微博</a></li>
+              
+                
+                <li class="navigation__item"><a href="https://www.zhihu.com/people/jia-ge-da-gua-hao" title="" class="">知乎</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Java 面向对象</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-11-06" class="post-meta__date date">2016-11-06</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <h1 id="面向对象（OOP）与面向过程"><a href="#面向对象（OOP）与面向过程" class="headerlink" title="面向对象（OOP）与面向过程"></a>面向对象（OOP）与面向过程</h1><p>1.二者都是一种思想。面向对象是相对于面向过程而言的。面向过程，强调的是行为。面向对象，将功能封装进对象，强调具备了功能的对象。<br>2.面向对象更加强调运用人类在日常的思维逻辑中采用的思想与原则，如抽象、分类、继承、聚合、多态等。</p>
+<h1 id="程序员从执行者转化成了指挥者。"><a href="#程序员从执行者转化成了指挥者。" class="headerlink" title="程序员从执行者转化成了指挥者。"></a>程序员从执行者转化成了指挥者。</h1><h2 id="完成需求时："><a href="#完成需求时：" class="headerlink" title="完成需求时："></a>完成需求时：</h2><p>1.先去找具有所需功能对象来用。<br>2.如果对象不存在，那么创建一个具有所需功能的对象。<br>3.这样简化开发并提高复用</p>
+<h2 id="为什么要有继承？"><a href="#为什么要有继承？" class="headerlink" title="为什么要有继承？"></a>为什么要有继承？</h2><p>多个类中存在相同属性和行为时，将这些内用抽取到单独的一个类中，那么多个类无需再重复定义这些属性和行为，只要继承此类即可。</p>
+<h3 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h3><p>1.继承的出现提高了代码的复用性。<br>2.继承的出现让类与类之间产生了关系（父子），提供了多态的前提。<br>3.不要仅为了获取其他类的某个特性而去继承。</p>
+<p><strong>在java中，继承的关键字用的extends,由此可以看出子类不是父类的子集，而是对于父类的扩展</strong><br><strong>子类不能直接访问父类中私有的成员变量和方法。</strong></p>
+<h2 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h2><p>封装是保证软件部件具有优良的模块性的基础，封装的目标就是要实现软件部件的“高内聚、低耦合”，防止程序相互依赖性而带来的变动影响。在面向对象的编程语言中，对象是封装的最基本单位，面向对象的封装比传统语言的封装更为清晰、更为有力。面向对象的封装就是把描述一个对象的属性和行为的代码封装在一个“模块”中，也就是一个类中，属性用变量定义，行为用方法进行定义，方法可以直接访问同一个对象中的属性。通常情况下，只要记住让变量和访问这个变量的方法放在一起，将一个类中的成员变量全部定义成私有的，只有这个类自己的方法才可以访问到这些成员变量，这就基本上实现对象的封装，就很容易找出要分配到这个类上的方法了，就基本上算是会面向对象的编程了。把握一个原则：把对同一事物进行操作的方法和相关的方法放在同一个类中，把方法和它操作的数据放在同一个类中</p>
+<h2 id="抽象"><a href="#抽象" class="headerlink" title="抽象"></a>抽象</h2><p>抽象就是找出一些事物的相似和共性之处，然后将这些事物归为一个类，这个类只考虑这些事物的相似和共性之处，并且会忽略与当前主题和目标无关的那些方面，将注意力集中在与当前目标有关的方面。例如，看到一只蚂蚁和大象，你能够想象出它们的相同之处，那就是抽象。抽象包括行为抽象和状态抽象两个方面。例如，定义一个Person类，如下：<br>class Person{<br>        String name;<br>        int age;<br>}<br>人本来是很复杂的事物，有很多方面，但因为当前系统只需要了解人的姓名和年龄，所以上面定义的类中只包含姓名和年龄这两个属性，这就是一种抽像，使用抽象可以避免考虑一些与目标无关的细节。我对抽象的理解就是不要用显微镜去看一个事物的所有方面，这样涉及的内容就太多了，而是要善于划分问题的边界，当前系统需要什么，就只考虑什么。</p>
+<h2 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h2><p>多态是指程序中定义的引用变量所指向的具体类型和通过该引用变量发出的方法调用在编程时并不确定，而是在程序运行期间才确定，即一个引用变量倒底会指向哪个类的实例对象，该引用变量发出的方法调用到底是哪个类中实现的方法，必须在由程序运行期间才能决定。因为在程序运行时才确定具体的类，这样，不用修改源程序代码，就可以让引用变量绑定到各种不同的类实现上，从而导致该引用调用的具体方法随之改变，即不修改程序代码就可以改变程序运行时所绑定的具体代码，让程序可以选择多个运行状态，这就是多态性。多态性增强了软件的灵活性和扩展性。例如，下面代码中的UserDao是一个接口，它定义引用变量userDao指向的实例对象由daofactory.getDao()在执行的时候返回，有时候指向的是UserJdbcDao这个实现，有时候指向的是UserHibernateDao这个实现，这样，不用修改源代码，就可以改变userDao指向的具体类实现，从而导致userDao.insertUser()方法调用的具体代码也随之改变，即有时候调用的是UserJdbcDao的insertUser方法，有时候调用的是UserHibernateDao的insertUser方法：<br>UserDao userDao = daofactory.getDao();<br>userDao.insertUser(user);</p>
+<p>比喻：领导叫你去叫几个人过来做了一些事，结果你叫了一些男人跟一些女人。<br><strong>领导的目的达到了（目的：人）你的任务完成了（任务：男人跟女人）<br>以上可以用代码表达如下<br>Person p = new Women()  或者 Person p = new Men() 多态的不确定性质在于此 编译时看左边，执行时看右边</strong></p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/11/06/about-Java/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"zhouqi"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016. | <a href="https://hexo.io/">Hexo</a> | by 阿Q</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
