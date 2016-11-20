@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    
+
+    <title>
+      Spring缓存注解@Cache使用 | 周奇的博客 
+    </title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+      <meta name="author" content="阿Q">
+    
+    
+
+    <meta name="description" content="参考资料：http://tom-seed.iteye.com/blog/2104430
+缓存注解有以下三个：@Cacheable      @CacheEvict    @CachePut
+-
+@Cacheable(value=”accountCache”)，这个注释的意思是，当调用这个方法的时候，会从一个名叫 accountCache 的缓存中查询，如果没有，则执行实际的方法（即查询数据库），并">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring缓存注解@Cache使用 | 周奇的博客">
+<meta property="og:url" content="http://yoursite.com/2016/11/20/Spring缓存注解-Cache使用/index.html">
+<meta property="og:site_name" content="周奇的博客">
+<meta property="og:description" content="参考资料：http://tom-seed.iteye.com/blog/2104430
+缓存注解有以下三个：@Cacheable      @CacheEvict    @CachePut
+-
+@Cacheable(value=”accountCache”)，这个注释的意思是，当调用这个方法的时候，会从一个名叫 accountCache 的缓存中查询，如果没有，则执行实际的方法（即查询数据库），并">
+<meta property="og:updated_time" content="2016-11-20T10:10:10.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spring缓存注解@Cache使用 | 周奇的博客">
+<meta name="twitter:description" content="参考资料：http://tom-seed.iteye.com/blog/2104430
+缓存注解有以下三个：@Cacheable      @CacheEvict    @CachePut
+-
+@Cacheable(value=”accountCache”)，这个注释的意思是，当调用这个方法的时候，会从一个名叫 accountCache 的缓存中查询，如果没有，则执行实际的方法（即查询数据库），并">
+    
+    
+    
+      <link rel="icon" type="image/x-icon" href="/favicon.png">
+    
+    <link rel="stylesheet" href="/css/uno.css">
+    <link rel="stylesheet" href="/css/highlight.css">
+    <link rel="stylesheet" href="/css/archive.css">
+    <link rel="stylesheet" href="/css/china-social-icon.css">
+
+</head>
+<body>
+
+    <span class="mobile btn-mobile-menu">
+        <i class="icon icon-list btn-mobile-menu__icon"></i>
+        <i class="icon icon-x-circle btn-mobile-close__icon hidden"></i>
+    </span>
+
+    
+
+<header class="panel-cover panel-cover--collapsed">
+
+
+  <div class="panel-main">
+
+  
+    <div class="panel-main__inner panel-inverted">
+    <div class="panel-main__content">
+
+        
+
+        <h1 class="panel-cover__title panel-title"><a href="/" title="link to homepage">周奇的博客</a></h1>
+        <hr class="panel-cover__divider" />
+
+        
+
+        <div class="navigation-wrapper">
+
+          <nav class="cover-navigation cover-navigation--primary">
+            <ul class="navigation">
+
+              
+                
+                <li class="navigation__item"><a href="/" title="" class="">首页</a></li>
+              
+                
+                <li class="navigation__item"><a href="http://www.zhouqifun.cn/resume/index.html" title="" class="">简历</a></li>
+              
+                
+                <li class="navigation__item"><a href="/archives" title="" class="">归档</a></li>
+              
+                
+                <li class="navigation__item"><a href="http://weibo.com/u/5281978911?refer_flag=1001030101_&is_all=1" title="" class="">微博</a></li>
+              
+                
+                <li class="navigation__item"><a href="https://www.zhihu.com/people/jia-ge-da-gua-hao" title="" class="">知乎</a></li>
+              
+
+            </ul>
+          </nav>
+
+          <!-- ----------------------------
+To add a new social icon simply duplicate one of the list items from below
+and change the class in the <i> tag to match the desired social network
+and then add your link to the <a>. Here is a full list of social network
+classes that you can use:
+
+    icon-social-500px
+    icon-social-behance
+    icon-social-delicious
+    icon-social-designer-news
+    icon-social-deviant-art
+    icon-social-digg
+    icon-social-dribbble
+    icon-social-facebook
+    icon-social-flickr
+    icon-social-forrst
+    icon-social-foursquare
+    icon-social-github
+    icon-social-google-plus
+    icon-social-hi5
+    icon-social-instagram
+    icon-social-lastfm
+    icon-social-linkedin
+    icon-social-medium
+    icon-social-myspace
+    icon-social-path
+    icon-social-pinterest
+    icon-social-rdio
+    icon-social-reddit
+    icon-social-skype
+    icon-social-spotify
+    icon-social-stack-overflow
+    icon-social-steam
+    icon-social-stumbleupon
+    icon-social-treehouse
+    icon-social-tumblr
+    icon-social-twitter
+    icon-social-vimeo
+    icon-social-xbox
+    icon-social-yelp
+    icon-social-youtube
+    icon-social-zerply
+    icon-mail
+
+-------------------------------->
+
+<!-- add social info here -->
+
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="panel-cover--overlay"></div>
+  </div>
+</header>
+
+    <div class="content-wrapper">
+        <div class="content-wrapper__inner entry">
+            
+
+<article class="post-container post-container--single">
+
+  <header class="post-header">
+    
+    <h1 class="post-title">Spring缓存注解@Cache使用</h1>
+
+    
+
+    <div class="post-meta">
+      <time datetime="2016-11-20" class="post-meta__date date">2016-11-20</time> 
+
+      <span class="post-meta__tags tags">
+
+          
+
+          
+
+      </span>
+    </div>
+    
+    
+
+  </header>
+
+  <section id="post-content" class="article-content post">
+    <p>参考资料：<a href="http://tom-seed.iteye.com/blog/2104430" target="_blank" rel="external">http://tom-seed.iteye.com/blog/2104430</a></p>
+<p>缓存注解有以下三个：<br><strong>@Cacheable</strong>      <strong>@CacheEvict</strong>    <strong>@CachePut</strong></p>
+<p>-</p>
+<p>@Cacheable(value=”accountCache”)，这个注释的意思是，当调用这个方法的时候，会从一个名叫 accountCache 的缓存中查询，如果没有，则执行实际的方法（即查询数据库），并将执行的结果存入缓存中，否则返回缓存中的对象。这里的缓存中的 key 就是参数 userName，value 就是 Account 对象。“accountCache”缓存是在 spring<em>.xml 中定义的名称。<br><em>*Example:</em></em><br><code>@Cacheable(value=&quot;accountCache&quot;)// 使用了一个缓存名叫 accountCache</code><br><code>public Account getAccountByName(String userName) {</code><br>     <code>// 方法内部实现不考虑缓存逻辑，直接实现业务</code><br>     <code>System.out.println(&quot;real query account.&quot;+userName);</code><br>     <code>return getFromDB(userName);</code><br><code>}</code></p>
+<p>-<br>@CacheEvict 注释来标记要清空缓存的方法，当这个方法被调用后，即会清空缓存。注意其中一个 @CacheEvict(value=”accountCache”,key=”#account.getName()”)，其中的 Key 是用来指定缓存的 key 的，这里因为我们保存的时候用的是 account 对象的 name 字段，所以这里还需要从参数 account 对象中获取 name 的值来作为 key，前面的 # 号代表这是一个 SpEL 表达式，此表达式可以遍历方法的参数对象，具体语法可以参考 Spring 的相关文档手册。<br><strong>Example:</strong><br><code>@CacheEvict(value=&quot;accountCache&quot;,key=&quot;#account.getName()&quot;)// 清空accountCache 缓存</code><br><code>public void updateAccount(Account account) {  
+     updateDB(account);   
+}</code>   </p>
+<p><code>@CacheEvict(value=&quot;accountCache&quot;,allEntries=true)// 清空accountCache 缓存</code><br><code>public void reload() {</code><br>     <code>reloadAll()</code><br><code>}</code>  </p>
+<p><code>@Cacheable(value=&quot;accountCache&quot;,condition=&quot;#userName.length() &lt;=4&quot;)// 缓存名叫 accountCache</code><br><code>public Account getAccountByName(String userName) {</code><br> <code>// 方法内部实现不考虑缓存逻辑，直接实现业务</code><br> <code>return getFromDB(userName);</code><br><code>}</code></p>
+<p>-<br>@CachePut 注释，这个注释可以确保方法被执行，同时方法的返回值也被记录到缓存中，实现缓存与数据库的同步更新。<br>示例：<br><code>@CachePut(value=&quot;accountCache&quot;,key=&quot;#account.getName()&quot;)// 更新accountCache 缓存</code><br><code>public Account updateAccount(Account account) {</code><br>   <code>return updateDB(account);</code><br><code>}</code></p>
+<p>-</p>
+
+  </section>
+
+  
+  
+
+<section class="post-comments">
+
+    <div class="ds-thread" data-thread-key="2016/11/20/Spring缓存注解-Cache使用/"></div>
+
+    <script type="text/javascript">
+      var duoshuoQuery = {short_name:"zhouqi"};
+      (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+        || document.getElementsByTagName('body')[0]).appendChild(ds);
+      })();
+    </script> 
+
+</section>
+
+
+</article>
+
+
+            <footer class="footer">
+
+    <span class="footer__copyright">&copy; 2016. | <a href="https://hexo.io/">Hexo</a> | by 阿Q</span>
+    
+</footer>
+        </div>
+    </div>
+
+    <!-- js files -->
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/main.js"></script>
+    <script src="/js/scale.fix.js"></script>
+    
+
+    
+
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript"> 
+        $(document).ready(function(){
+            MathJax.Hub.Config({ 
+                tex2jax: {inlineMath: [['[latex]','[/latex]'], ['\\(','\\)']]} 
+            });
+        });
+    </script>
+
+
+    
+
+    <script src="/js/awesome-toc.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $.awesome_toc({
+                overlay: true,
+                contentId: "post-content",
+            });
+        });
+    </script>
+
+
+    
+    
+    <!--kill ie6 -->
+<!--[if IE 6]>
+  <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
+<![endif]-->
+
+</body>
+</html>
